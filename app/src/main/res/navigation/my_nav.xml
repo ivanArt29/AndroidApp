@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/registration"
-        android:name="com.example.prj3.Registration"
+        android:name="com.example.prj3.Views.Registration"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
@@ -16,11 +16,21 @@
     </fragment>
     <fragment
         android:id="@+id/mainMenu"
-        android:name="com.example.prj3.MainMenu"
+        android:name="com.example.prj3.Views.MainMenu"
         android:label="fragment_main_menu"
         tools:layout="@layout/fragment_main_menu" >
         <action
             android:id="@+id/action_mainMenu_to_registration"
             app:destination="@id/registration" />
     </fragment>
+    <fragment
+        android:id="@+id/test_ex"
+        android:name="com.example.prj3.Views.Test_ex"
+        android:label="fragment_test_ex"
+        tools:layout="@layout/fragment_test_ex" />
+    <fragment
+        android:id="@+id/test_inner"
+        android:name="com.example.prj3.Views.Test_inner"
+        android:label="fragment_test_inner"
+        tools:layout="@layout/fragment_test_inner" />
 </navigation>
