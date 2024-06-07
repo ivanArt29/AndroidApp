@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/registration">
+    app:startDestination="@id/signIn">
 
     <fragment
         android:id="@+id/registration"
@@ -33,4 +33,49 @@
         android:name="com.example.prj3.Views.Test_inner"
         android:label="fragment_test_inner"
         tools:layout="@layout/fragment_test_inner" />
+    <fragment
+        android:id="@+id/testResult"
+        android:name="com.example.prj3.Views.testResult"
+        android:label="fragment_test_result"
+        tools:layout="@layout/fragment_test_result" />
+    <fragment
+        android:id="@+id/sentences_ex"
+        android:name="com.example.prj3.Views.Sentences_ex"
+        android:label="fragment_sentences_ex"
+        tools:layout="@layout/fragment_sentences_ex" />
+    <fragment
+        android:id="@+id/sentences_inner"
+        android:name="com.example.prj3.Views.sentences_inner"
+        android:label="fragment_sentences_inner"
+        tools:layout="@layout/fragment_sentences_inner" />
+    <fragment
+        android:id="@+id/sentencesResult"
+        android:name="com.example.prj3.Views.SentencesResult"
+        android:label="fragment_sentences_result"
+        tools:layout="@layout/fragment_sentences_result" />
+    <fragment
+        android:id="@+id/audioEx"
+        android:name="com.example.prj3.Views.AudioEx"
+        android:label="fragment_audio_ex"
+        tools:layout="@layout/fragment_audio_ex" />
+    <fragment
+        android:id="@+id/audioInner"
+        android:name="com.example.prj3.Views.AudioInner"
+        android:label="fragment_audio_inner"
+        tools:layout="@layout/fragment_audio_inner" />
+    <fragment
+        android:id="@+id/audioResult"
+        android:name="com.example.prj3.Views.AudioResult"
+        android:label="fragment_audio_result"
+        tools:layout="@layout/fragment_audio_result" />
+    <fragment
+        android:id="@+id/signIn"
+        android:name="com.example.prj3.Views.SignIn"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" />
+    <fragment
+        android:id="@+id/verification"
+        android:name="com.example.prj3.Views.Verification"
+        android:label="fragment_verification"
+        tools:layout="@layout/fragment_verification" />
 </navigation>

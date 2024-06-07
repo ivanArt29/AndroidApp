@@ -34,12 +34,13 @@ class MainMenu : Fragment() {
             findNavController().navigate(R.id.test_ex)
         }
 
+        binding.cardView2.setOnClickListener{
+            findNavController().navigate(R.id.sentences_ex)
+        }
+        binding.cardView3.setOnClickListener{
+            findNavController().navigate(R.id.audioEx)
+        }
 
-//        binding.buttonQuit.setOnClickListener {
-//            viewModel.quit()
-//        }
-
-        // TODO: Use the ViewModel
     }
 
     private fun navigateToRegistration() {

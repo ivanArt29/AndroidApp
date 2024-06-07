@@ -81,11 +81,18 @@ fun getLevelsWithStages(): Flow<List<levelWithStages>>
     @Query("SELECT * FROM stages WHERE parentLevelId = :levelId")
     fun getStagesWithWordsForLevel(levelId: Int): List<WordsWithStages>
 
+    @Transaction
+    @Query("SELECT * FROM mywords WHERE levelId = :levelId AND parentStageId = :stagId")
+    fun getWordsForStageByLevel(levelId: Int, stagId: Int):List<MyWords>
+
+    @Transaction
+    @Query("SELECT * FROM mywords WHERE levelId = :levelId AND parentStageId = :stagId AND isCorrect = 1")
+    fun getCorrectWordForStageByLevel(levelId: Int, stagId: Int):MyWords
 
 
     //RuWords
-    @Query("SELECT * FROM RuWords ORDER BY id DESC")
-    fun getRuWords(): Flow<List<RuWords>>
+    @Query("SELECT * FROM RuWords WHERE levelId = :levelId AND parentStageId = :stagId")
+    fun getRuWords(levelId: Int, stagId: Int): List<RuWords>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertRuWord(ruWord: RuWords): Long
@@ -99,4 +106,6 @@ fun getLevelsWithStages(): Flow<List<levelWithStages>>
     @Transaction
     @Query("SELECT * FROM stages WHERE parentLevelId = :levelId")
     fun getStagesWithRuWords(levelId: Int): List<RuWordsWithStages>
+
+
 }

@@ -33,7 +33,9 @@ data class MyWords(
     @ColumnInfo(name = "parentStageId")
     val parentStageId: Int,
     @ColumnInfo(name = "LevelId")
-    val levelId: Int
+    val levelId: Int,
+    @ColumnInfo(name = "isCorrect")
+    val isCorrect: Boolean
 )
 
 data class levelWithStages(

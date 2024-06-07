@@ -68,67 +68,67 @@ class Registration : Fragment() {
 //    private fun navigateToMainMenu() {
 //        findNavController().navigate(R.id.mainMenu)
 //    }
-private lateinit var binding: FragmentRegistrationBinding
-    private val viewModel: RegistrationViewModel by viewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentRegistrationBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.regButton.setOnClickListener {
-            val email = binding.editTextTextEmailAddress.text.toString()
-            val password = binding.editTextTextPassword.text.toString()
-
-            // Регистрация пользователя
-            viewModel.registerWithEmail(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        // Если регистрация успешна, отправляем письмо для подтверждения адреса электронной почты
-                        viewModel.sendEmailVerification()?.addOnCompleteListener { emailTask ->
-                            if (emailTask.isSuccessful) {
-                                // Перенаправляем пользователя на экран подтверждения
-                                // (например, экран, сообщающий об отправке письма для подтверждения)
-                                Toast.makeText(requireContext(), "Check your email", Toast.LENGTH_LONG).show()
-                            } else {
-                                // Обработка ошибок отправки письма для подтверждения
-                            }
-                        }
-                    } else {
-                        // Обработка ошибок регистрации
-                    }
-                }
-        }
-
-        binding.SignIn.setOnClickListener {
-            val email = binding.editTextTextEmailAddress.text.toString()
-            val password = binding.editTextTextPassword.text.toString()
-
-            // Вход пользователя
-            viewModel.signInWithEmail(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val user = viewModel.auth.currentUser
-                        if (user != null && user.isEmailVerified) {
-                            // Пользователь успешно вошел в систему и адрес электронной почты подтвержден
-                            // Перенаправляем пользователя на главный экран приложения
-                            Toast.makeText(requireContext(), "Sign in as $user.", Toast.LENGTH_LONG).show()
-                            findNavController().navigate(R.id.mainMenu)
-                        } else {
-                            // Обработка случая, когда пользователь не подтвердил адрес электронной почты
-                            Toast.makeText(requireContext(), "Verify your email", Toast.LENGTH_LONG).show()
-                        }
-                    } else {
-                        // Обработка ошибок входа
-                    }
-                }
-        }
-    }
+//private lateinit var binding: FragmentRegistrationBinding
+//    private val viewModel: RegistrationViewModel by viewModels()
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        binding = FragmentRegistrationBinding.inflate(inflater, container, false)
+//        return binding.root
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        binding.regButton.setOnClickListener {
+//            val email = binding.editTextTextEmailAddress.text.toString()
+//            val password = binding.editTextTextPassword.text.toString()
+//
+//            // Регистрация пользователя
+//            viewModel.registerWithEmail(email, password)
+//                .addOnCompleteListener { task ->
+//                    if (task.isSuccessful) {
+//                        // Если регистрация успешна, отправляем письмо для подтверждения адреса электронной почты
+//                        viewModel.sendEmailVerification()?.addOnCompleteListener { emailTask ->
+//                            if (emailTask.isSuccessful) {
+//                                // Перенаправляем пользователя на экран подтверждения
+//                                // (например, экран, сообщающий об отправке письма для подтверждения)
+//                                Toast.makeText(requireContext(), "Check your email", Toast.LENGTH_LONG).show()
+//                            } else {
+//                                // Обработка ошибок отправки письма для подтверждения
+//                            }
+//                        }
+//                    } else {
+//                        // Обработка ошибок регистрации
+//                    }
+//                }
+//        }
+//
+//        binding.SignIn.setOnClickListener {
+//            val email = binding.editTextTextEmailAddress.text.toString()
+//            val password = binding.editTextTextPassword.text.toString()
+//
+//            // Вход пользователя
+//            viewModel.signInWithEmail(email, password)
+//                .addOnCompleteListener { task ->
+//                    if (task.isSuccessful) {
+//                        val user = viewModel.auth.currentUser
+//                        if (user != null && user.isEmailVerified) {
+//                            // Пользователь успешно вошел в систему и адрес электронной почты подтвержден
+//                            // Перенаправляем пользователя на главный экран приложения
+//                            Toast.makeText(requireContext(), "Sign in as $user.", Toast.LENGTH_LONG).show()
+//                            findNavController().navigate(R.id.mainMenu)
+//                        } else {
+//                            // Обработка случая, когда пользователь не подтвердил адрес электронной почты
+//                            Toast.makeText(requireContext(), "Verify your email", Toast.LENGTH_LONG).show()
+//                        }
+//                    } else {
+//                        // Обработка ошибок входа
+//                    }
+//                }
+//        }
+//    }
 }
 

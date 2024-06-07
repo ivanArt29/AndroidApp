@@ -18,10 +18,20 @@ class TestInnerViewModel(private val repository: Repository) : ViewModel() {
     private val _ruWordsForStage = MutableLiveData<List<RuWords>?>()
     val ruWordsForStage: MutableLiveData<List<RuWords>?> = _ruWordsForStage
 
+    private val _correctCount = MutableLiveData<Int>().apply { value = 0 }
+    val correctCount: LiveData<Int> = _correctCount
+
+    private val _correctWordForStage = MutableLiveData<String>()
+    val correctWordForStage: MutableLiveData<String> = _correctWordForStage
+
+    fun incrementCorrectCount() {
+        _correctCount.value = (_correctCount.value ?: 0) + 1
+    }
+
+
     fun getWordsForStage(levelId: Int,stageId: Int) {
         viewModelScope.launch(Dispatchers.IO) { // Запускаем в фоновом потоке
-            val stagesWithWords = repository.getStagesWithWordsForLevel(levelId)
-            val wordsForStage = stagesWithWords.find { it.parentStage.id == stageId }?.words
+            val wordsForStage = repository.getWordsForStageByLevel(levelId,stageId)
             withContext(Dispatchers.Main) { // Возвращаемся в основной поток
                 _wordsForStage.value = wordsForStage
             }
@@ -30,10 +40,18 @@ class TestInnerViewModel(private val repository: Repository) : ViewModel() {
 
     fun getRuWordForStage(levelId: Int,stageId: Int) {
         viewModelScope.launch(Dispatchers.IO) { // Запускаем в фоновом потоке
-            val stagesWithRuWords = repository.getStagesWithRuWords(levelId)
-            val ruWordsForStage = stagesWithRuWords.find { it.parentStage.id == stageId }?.words
+            val ruWordsForStage = repository.getRuWords(levelId,stageId)
             withContext(Dispatchers.Main) { // Возвращаемся в основной поток
                 _ruWordsForStage.value = ruWordsForStage
+            }
+        }
+    }
+
+    fun getCorrectWord(levelId: Int, stageId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val correctWord = repository.getCorrectWordForStageByLevel(levelId, stageId).word
+            withContext(Dispatchers.Main) {
+                _correctWordForStage.value = correctWord
             }
         }
     }

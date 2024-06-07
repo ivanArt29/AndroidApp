@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.prj3.R
 import com.example.prj3.TestBd.LevelsListViewModelFactory
@@ -13,6 +14,11 @@ import com.example.prj3.TestBd.RepositoryImpl
 import com.example.prj3.TestBd.TestDB
 import com.example.prj3.databinding.FragmentTestExBinding
 import com.example.prj3.viewModels.TestExViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.Dispatchers
 
 class Test_ex : Fragment() {
@@ -25,46 +31,85 @@ class Test_ex : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        return inflater.inflate(R.layout.fragment_test_ex, container, false)
         binding = FragmentTestExBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btn1.setOnClickListener{
-            viewModel.insertLevel(TestDB.PREPOPULATE_DATA[0])
-            viewModel.insertLevel(TestDB.PREPOPULATE_DATA[1])
-            viewModel.insertLevel(TestDB.PREPOPULATE_DATA[2])
 
-            viewModel.insertStage(TestDB.PREPOPULATE_STAGES[0])
-            viewModel.insertStage(TestDB.PREPOPULATE_STAGES[1])
-            viewModel.insertStage(TestDB.PREPOPULATE_STAGES[2])
-            viewModel.insertStage(TestDB.PREPOPULATE_STAGES[3])
-
-            viewModel.insertWord(TestDB.PREPOPULATE_WORDS[0])
-            viewModel.insertWord(TestDB.PREPOPULATE_WORDS[1])
-            viewModel.insertWord(TestDB.PREPOPULATE_WORDS[2])
-            viewModel.insertWord(TestDB.PREPOPULATE_WORDS[3])
-
-            viewModel.insertRuWord(TestDB.PREPOPULATE_RUWORDS[0])
-            viewModel.insertRuWord(TestDB.PREPOPULATE_RUWORDS[1])
-            viewModel.insertRuWord(TestDB.PREPOPULATE_RUWORDS[2])
-            viewModel.insertRuWord(TestDB.PREPOPULATE_RUWORDS[3])
-
-            findNavController().navigate(R.id.test_inner)
+        viewModel.checkCompleted(1) { isCompleted ->
+            if (isCompleted) {
+                binding.btn1.setText("Уровень 1(пройден)")
+            }
+        }
+        viewModel.checkCompleted(2) { isCompleted ->
+            if (isCompleted) {
+                binding.btn2.setText("Уровень 2(пройден)")
+            }
+        }
+        viewModel.checkCompleted(3) { isCompleted ->
+            if (isCompleted) {
+                binding.btn3.setText("Уровень 3(пройден)")
+            }
+        }
+        viewModel.checkCompleted(4) { isCompleted ->
+            if (isCompleted) {
+                binding.btn4.setText("Уровень 4(пройден)")
+            }
+        }
+        viewModel.checkCompleted(5) { isCompleted ->
+            if (isCompleted) {
+                binding.btn5.setText("Уровень 5(пройден)")
+            }
         }
 
+
+
+
+        binding.floatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.mainMenu)
+        }
+
+        binding.btn1.setOnClickListener {
+            val bundle = Bundle().apply {
+                putInt("level", 1)
+            }
+            findNavController().navigate(R.id.test_inner, bundle)
+        }
+        binding.btn2.setOnClickListener {
+            val bundle = Bundle().apply {
+                putInt("level", 2)
+            }
+            findNavController().navigate(R.id.test_inner, bundle)
+        }
+        binding.btn3.setOnClickListener {
+            val bundle = Bundle().apply {
+                putInt("level", 3)
+            }
+            findNavController().navigate(R.id.test_inner, bundle)
+        }
+        binding.btn4.setOnClickListener {
+            val bundle = Bundle().apply {
+                putInt("level", 4)
+            }
+            findNavController().navigate(R.id.test_inner, bundle)
+        }
+        binding.btn5.setOnClickListener {
+            val bundle = Bundle().apply {
+                putInt("level", 5)
+            }
+            findNavController().navigate(R.id.test_inner, bundle)
+        }
+
+
+
+
     }
-
-
 }

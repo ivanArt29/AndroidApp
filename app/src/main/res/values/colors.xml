@@ -6,4 +6,6 @@
     <color name="grey">#8b8c89</color>
     <color name="background_light">#F5F9FF</color>
     <color name="azure">#167F71</color>
+    <color name="blue">#283477</color>
+    <color name="link">#0000EE</color>
 </resources>

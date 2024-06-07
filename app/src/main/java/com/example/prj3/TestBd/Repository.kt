@@ -19,10 +19,14 @@ interface Repository{
     suspend fun updateWord(word:MyWords)
     suspend fun deleteWord(word:MyWords)
 
+    fun getWordsForStageByLevel(levelId: Int, stagId: Int):List<MyWords>
+
+    fun getCorrectWordForStageByLevel(levelId: Int, stagId: Int):MyWords
+
 
     fun getStagesWithWordsForLevel(levelId: Int): List<WordsWithStages>
 
-    fun getRuWords():Flow<List<RuWords>>
+    fun getRuWords(levelId: Int, stagId: Int):List<RuWords>
     suspend fun insertRuWord(ruWord:RuWords)
     suspend fun updateRuWord(ruWord:RuWords)
     suspend fun deleteRuWord(ruWord:RuWords)

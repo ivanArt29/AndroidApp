@@ -13,7 +13,7 @@
         android:background="@color/azure"
         android:fontFamily="@font/bold"
         android:gravity="center"
-        android:text="Выбор уровня"
+        android:text="@string/test"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="36sp"
@@ -21,20 +21,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav" />
-
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_header">
@@ -45,16 +35,16 @@
             android:orientation="vertical"
             android:paddingTop="20dp">
 
+
             <Button
                 android:id="@+id/btn1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
-                android:text="Уровень 1"
                 android:backgroundTint="@color/azure"
                 android:fontFamily="@font/bold"
-                />
+                android:text="@string/level_1" />
 
             <Button
                 android:id="@+id/btn2"
@@ -62,10 +52,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
-                android:text="Уровень 2"
                 android:backgroundTint="@color/azure"
                 android:fontFamily="@font/bold"
-                />
+                android:text="@string/level_2" />
 
             <Button
                 android:id="@+id/btn3"
@@ -73,9 +62,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
-                android:text="Уровень 3"
                 android:backgroundTint="@color/azure"
-                android:fontFamily="@font/bold"/>
+                android:fontFamily="@font/bold"
+                android:text="@string/level_3" />
 
             <Button
                 android:id="@+id/btn4"
@@ -83,9 +72,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
-                android:text="Уровень 4"
                 android:backgroundTint="@color/azure"
-                android:fontFamily="@font/bold"/>
+                android:fontFamily="@font/bold"
+                android:text="@string/level_4" />
 
             <Button
                 android:id="@+id/btn5"
@@ -93,9 +82,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
-                android:text="Уровень 5"
                 android:backgroundTint="@color/azure"
-                android:fontFamily="@font/bold"/>
+                android:fontFamily="@font/bold"
+                android:text="@string/level_5" />
 
             <Button
                 android:layout_width="match_parent"
@@ -103,9 +92,9 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
                 android:enabled="false"
-                android:text="Уровень 6"
-                android:textColor="@android:color/darker_gray"
-                android:fontFamily="@font/bold"/>
+                android:fontFamily="@font/bold"
+                android:text="@string/level_6"
+                android:textColor="@android:color/darker_gray" />
 
             <Button
 
@@ -114,9 +103,9 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
                 android:enabled="false"
-                android:text="Уровень 7"
-                android:textColor="@android:color/darker_gray"
-                android:fontFamily="@font/bold"/>
+                android:fontFamily="@font/bold"
+                android:text="@string/level_7"
+                android:textColor="@android:color/darker_gray" />
 
             <Button
                 android:layout_width="match_parent"
@@ -124,9 +113,9 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
                 android:enabled="false"
-                android:text="Уровень 8"
-                android:textColor="@android:color/darker_gray"
-                android:fontFamily="@font/bold"/>
+                android:fontFamily="@font/bold"
+                android:text="@string/level_8"
+                android:textColor="@android:color/darker_gray" />
 
             <Button
                 android:layout_width="match_parent"
@@ -134,9 +123,9 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
                 android:enabled="false"
-                android:text="Уровень 9"
-                android:textColor="@android:color/darker_gray"
-                android:fontFamily="@font/bold"/>
+                android:fontFamily="@font/bold"
+                android:text="@string/level_9"
+                android:textColor="@android:color/darker_gray" />
 
             <Button
                 android:layout_width="match_parent"
@@ -144,13 +133,36 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="10dp"
                 android:enabled="false"
-                android:text="Уровень 10"
-                android:textColor="@android:color/darker_gray"
-                android:fontFamily="@font/bold"/>
+                android:fontFamily="@font/bold"
+                android:text="@string/level_10"
+                android:textColor="@android:color/darker_gray" />
 
         </LinearLayout>
 
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:alpha="0"
+        android:backgroundTint="@color/azure"
+        android:clickable="true"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="41dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="336dp"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintEnd_toEndOf="@+id/textView_header"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

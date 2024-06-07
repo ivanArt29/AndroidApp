@@ -84,14 +84,22 @@ class RepositoryImpl(context: Context,private val backgroundDispatcher: Coroutin
         }
     }
 
+    override fun getWordsForStageByLevel(levelId: Int, stagId: Int): List<MyWords> {
+        return levelDao.getWordsForStageByLevel(levelId,stagId)
+    }
+
+    override fun getCorrectWordForStageByLevel(levelId: Int, stagId: Int): MyWords {
+        return levelDao.getCorrectWordForStageByLevel(levelId,stagId)
+    }
+
     override fun getStagesWithWordsForLevel(levelId: Int): List<WordsWithStages> {
         return levelDao.getStagesWithWordsForLevel(levelId)
     }
 
 
     //RuWords
-    override fun getRuWords(): Flow<List<RuWords>> {
-        return levelDao.getRuWords()
+    override fun getRuWords(levelId: Int, stagId: Int): List<RuWords> {
+        return levelDao.getRuWords(levelId, stagId)
     }
 
     override suspend fun insertRuWord(ruWord: RuWords) {
